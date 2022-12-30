@@ -44,9 +44,8 @@ where
 
     let mut word_vec = Vec::<T>::new();
 
-    for i in start_index..=end_index {
+    for word in WORD_LIST.iter().take(end_index + 1).skip(start_index) {
         // i is guaranteed to be within bounds by the `get_range_bounds` function
-        let word = WORD_LIST[i];
         word_vec.push(T::from(word));
     }
 

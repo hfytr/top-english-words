@@ -3,6 +3,6 @@ name = "top-english-words"
 version = "1.0.0"
 edition = "2021"
 description = "Library to retrieve top words from the English language"
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+readme = "README.md"
+repository = "https://github.com/hunterlawson/top-english-words"
+license-file = "LICENSE"

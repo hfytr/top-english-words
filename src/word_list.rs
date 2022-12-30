@@ -1,4 +1,4 @@
-pub(crate) static WORD_LIST: [&'static str; crate::NUM_WORDS] = [
+pub(crate) static WORD_LIST: [&str; crate::NUM_WORDS] = [
     "the",
     "be",
     "and",

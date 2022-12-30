@@ -90,7 +90,7 @@ pub fn is_top_word(word: &str) -> bool {
     WORD_LIST.contains(&word)
 }
 
-/// Given a word, get its index in the list
+/// Given a word, get its index in the list.
 ///
 /// Note that the list is sorted by how frequently their used. Lower indices
 /// mean that a word is used more frequently than another.

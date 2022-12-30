@@ -9,6 +9,7 @@ mod word_list;
 
 pub use functions::*;
 
+/// The total number of words that are stored.
 pub const NUM_WORDS: usize = 1000;
 
 #[cfg(test)]

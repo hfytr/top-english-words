@@ -1,8 +1,10 @@
 [package]
 name = "top-english-words"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Library to retrieve top words from the English language"
 readme = "README.md"
 repository = "https://github.com/hunterlawson/top-english-words"
-license-file = "LICENSE"
+license = "MIT OR Apache-2.0"
+keywords = ["words", "popular", "frequent", "english"]
+categories = ["text-processing"]

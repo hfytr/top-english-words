@@ -1,3 +1,9 @@
+//! top-english-words
+//! 
+//! Rust crate for retrieving the most frequently used words in the English language
+//! from a list of 1000 words. Useful for training AI, text compression, or testing
+//! word processing applications.
+
 mod functions;
 mod word_list;
 

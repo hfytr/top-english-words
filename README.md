@@ -1,6 +1,6 @@
 # top-english-words
 
-[![Build](https://github.com/hunterlawson/top-english-words/blob/master/.github/workflows/tests.yml/badge.svg)](https://github.com/hunterlawson/top-english-words/blob/master/.github/workflows/tests.yml)
+[![Build](https://github.com/hunterlawson/top-english-words/actions/workflows/tests.yml/badge.svg)](https://github.com/hunterlawson/top-english-words/blob/master/.github/workflows/tests.yml)
 [![Crate](https://img.shields.io/crates/v/top-english-words)](https://crates.io/crates/top-english-words)
 [![License](https://img.shields.io/crates/l/top-english-words)](https://github.com/hunterlawson/top-english-words/blob/master/LICENSE)
 

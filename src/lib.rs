@@ -17,8 +17,9 @@ mod tests {
 
     #[test]
     fn test_get_words() {
-        let words = get_words::<String>();
-        assert_eq!(words.len(), NUM_WORDS);
+        for (i, s) in get_words::<&str>().iter().enumerate() {
+            assert_eq!(*s, WORD_LIST[i]);
+        }
     }
 
     #[test]

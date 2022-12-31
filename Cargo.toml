@@ -8,3 +8,6 @@ repository = "https://github.com/hunterlawson/top-english-words"
 license = "MIT OR Apache-2.0"
 keywords = ["words", "popular", "frequent", "english"]
 categories = ["text-processing"]
+
+[dependencies]
+include-lines = "1.0.0"

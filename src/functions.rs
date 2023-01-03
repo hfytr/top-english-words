@@ -5,19 +5,35 @@ use crate::NUM_WORDS;
 
 /// Get all the words from the list of top English words.
 ///
-/// The number of words returned in the list is [NUM_WORDS].
+/// The words will be ordered by their rank in the list.
+/// The number of words returned in the vector is [NUM_WORDS].
+#[inline]
 pub fn get_words<T>() -> Vec<T>
 where
     T: From<&'static str>,
 {
-    let mut word_vec = vec![];
-    word_vec.reserve_exact(NUM_WORDS);
+    let mut words = vec![];
+    words.reserve_exact(NUM_WORDS);
 
     for word in WORD_LIST {
-        word_vec.push(T::from(word));
+        words.push(T::from(word));
     }
 
-    word_vec
+    words
+}
+
+/// Get all the words from the list of top English words in alphabetical order.
+///
+/// The number of words returned in the vector is [NUM_WORDS].
+#[inline]
+pub fn get_words_a<T>() -> Vec<T>
+where
+    T: From<&'static str> + Ord,
+{
+    let mut words = get_words::<T>();
+    words.sort();
+
+    words
 }
 
 /// Get words from the list of top English words that fall into the given [range](https://doc.rust-lang.org/reference/expressions/range-expr.html).
@@ -32,6 +48,7 @@ where
 ///
 /// let first_5_words = get_words_range::<String>(..5).unwrap();
 /// ```
+#[inline]
 pub fn get_words_range<T>(range: impl RangeBounds<usize>) -> Option<Vec<T>>
 where
     T: From<&'static str>,
@@ -58,20 +75,19 @@ where
         return None;
     }
 
-    let mut word_vec = vec![];
-    word_vec.reserve_exact(end_index - start_index + 1);
+    let mut words = vec![];
+    words.reserve_exact(end_index - start_index + 1);
 
     for word in WORD_LIST.iter().take(end_index + 1).skip(start_index) {
-        word_vec.push(T::from(word));
+        words.push(T::from(word));
     }
 
-    Some(word_vec)
+    Some(words)
 }
 
-/// Get words from the list of top English words that fall into the given [range](https://doc.rust-lang.org/reference/expressions/range-expr.html).
+/// Get words from the list of top English words that fall into the given [range](https://doc.rust-lang.org/reference/expressions/range-expr.html) in alphabetical order.
 ///
-/// The words will be ordered alphabetically. If the range is invalid,
-/// this function returns [None].
+/// If the range is invalid, this function returns [None].
 ///
 /// # Example
 ///
@@ -80,19 +96,21 @@ where
 ///
 /// let first_5_words = get_words_range_a::<String>(..5).unwrap();
 /// ```
+#[inline]
 pub fn get_words_range_a<T>(range: impl RangeBounds<usize>) -> Option<Vec<T>>
 where
     T: From<&'static str> + Ord,
 {
-    let mut words_vec = get_words_range::<T>(range)?;
-    words_vec.sort();
+    let mut words = get_words_range::<T>(range)?;
+    words.sort();
 
-    Some(words_vec)
+    Some(words)
 }
 
 /// Get a word from the list of top English words.
 ///
 /// If the index is invalid, this function returns [None].
+#[inline]
 pub fn get_word<T>(position: usize) -> Option<T>
 where
     T: From<&'static str>,
@@ -101,16 +119,13 @@ where
 }
 
 /// Check if the given word is in the list of top English words.
-pub fn is_top_word(word: &str) -> bool {
-    WORD_LIST.contains(&word)
-}
-
-/// Given a word, get its index in the list.
 ///
+/// If the word is in the list, return its index.
 /// Note that the list is sorted by how frequently their used. Lower indices
 /// mean that a word is used more frequently than another.
 ///
 /// If the word is not present in the list, this function returns [None].
-pub fn get_word_index(word: &str) -> Option<usize> {
+#[inline]
+pub fn is_top_word(word: &str) -> Option<usize> {
     WORD_LIST.iter().position(|w| *w == word)
 }

@@ -20,6 +20,10 @@ mod tests {
         for (i, s) in get_words::<&str>().iter().enumerate() {
             assert_eq!(*s, WORD_LIST[i]);
         }
+
+        // Test get_words_a returns the correct alphabetical order
+        let words_alpha = get_words_a::<String>();
+        assert!(words_alpha.windows(2).all(|w| w[1] >= w[0]));
     }
 
     #[test]
@@ -55,16 +59,9 @@ mod tests {
 
     #[test]
     fn test_is_top_word() {
-        assert!(is_top_word(WORD_LIST[0]));
-        assert!(is_top_word(WORD_LIST[5]));
-        assert!(!is_top_word("crepuscular"));
-    }
-
-    #[test]
-    fn test_get_word_index() {
-        assert_eq!(get_word_index(WORD_LIST[0]).unwrap(), 0);
-        assert_eq!(get_word_index(WORD_LIST[5]).unwrap(), 5);
-        assert_eq!(get_word_index("crepuscular"), None);
+        assert!(matches!(is_top_word(WORD_LIST[0]), Some(0)));
+        assert!(matches!(is_top_word(WORD_LIST[5]), Some(5)));
+        assert!(matches!(is_top_word("crepuscular"), None));
     }
 
     #[test]
